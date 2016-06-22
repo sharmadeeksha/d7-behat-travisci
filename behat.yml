@@ -3,9 +3,6 @@ default:
     default:
       contexts:
         - FeatureContext
-        - CustomContext:
-                  baseUrl: http://localhost:8080
-                  tempPath: /var/tmp
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext
@@ -13,20 +10,17 @@ default:
   extensions:
     Behat\MinkExtension:
       goutte: ~
-      base_url: http://bcd7.dev
+      base_url: http://behat.test
       browser_name: phantomjs
       selenium2:
-        wd_host: http://bcd7.dev:4444/wd/hub
+        wd_host: http://localhost:4444/wd/hub
         capabilities:
           version: ''
     Drupal\DrupalExtension:
       blackbox: ~
       api_driver: 'drupal'
-      drush:
-        root: './html'
-        alias: 'bcd7'
       drupal:
-        drupal_root: './html'
+        drupal_root: 'drupal-7.43'
       region_map:
         content: "#content"
         footer: "#footer"
